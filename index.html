@@ -21,46 +21,53 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <style type="css/text">
-		.gallery {
-		  --size: 100px;
-		  display: grid;
-		  grid-template-columns: repeat(6, var(--size));
-		  grid-auto-rows: var(--size);
-		  margin-bottom: var(--size);
-		  place-items: start center;
-		  gap: 5px;
-		  
-		  &:has(:hover) img:not(:hover),
-		  &:has(:focus) img:not(:focus){
-		    filter: brightness(0.5) contrast(0.5);
-		  }
-		
-		  & img {
-		    object-fit: cover;
-		    width: calc(var(--size) * 2);
-		    height: calc(var(--size) * 2);
-		    clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
-		    transition: clip-path 0.25s, filter 0.75s;
-		    grid-column: auto / span 2;
-		    border-radius: 5px;
-		
-		    &:nth-child(5n - 1) { 
-		      grid-column: 2 / span 2 
-		    }
-		
-		    &:hover,
-		    &:focus {
-		      clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
-		      z-index: 1;
-		      transition: clip-path 0.25s, filter 0.25s;
-		    }
-		    
-		    &:focus {
-		      outline: 1px dashed black;
-		      outline-offset: -5px;
-		    }
-		  }
-		}
+		<style>
+    /* Integrated CSS for the Gallery Section */
+    .gallery {
+        --size: 100px;
+        display: grid;
+        grid-template-columns: repeat(6, var(--size));
+        grid-auto-rows: var(--size);
+        margin-bottom: var(--size);
+        place-items: start center;
+        gap: 5px;
+    }
+
+    /* Handle hover/focus states for non-active images */
+    .gallery:has(:hover) img:not(:hover),
+    .gallery:has(:focus) img:not(:focus) {
+        filter: brightness(0.5) contrast(0.5);
+    }
+
+    .gallery img {
+        object-fit: cover;
+        width: calc(var(--size) * 2);
+        height: calc(var(--size) * 2);
+        /* Honeycomb shape clip-path */
+        clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
+        transition: clip-path 0.25s, filter 0.75s;
+        grid-column: auto / span 2;
+        border-radius: 5px;
+    }
+
+    /* Offset for the honeycomb layout */
+    .gallery img:nth-child(5n - 1) {
+        grid-column: 2 / span 2;
+    }
+
+    /* Hover effects */
+    .gallery img:hover,
+    .gallery img:focus {
+        clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+        z-index: 1;
+        transition: clip-path 0.25s, filter 0.25s;
+    }
+
+    .gallery img:focus {
+        outline: 1px dashed black;
+        outline-offset: -5px;
+    }
+</style>
     </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="margin:0;padding:0">
@@ -782,35 +789,32 @@
 
 
 	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-      <div class="container" style="margin: 0;min-height: 100vh;display: grid;place-items: center;">
-      	<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <span class="subheading">Contact</span>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>for any type of Technical Issues, Help and Feedback</p>
-          </div>
+    <div class="container" style="margin: 0; min-height: 100vh; display: grid; place-items: center;">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">Contact</span>
+                <h2 class="mb-4">Contact Me</h2>
+                <p>for any type of Technical Issues, Help and Feedback</p>
+            </div>
         </div>
 
         <div class="row no-gutters block-9">
-          <div class="col-md-6 order-md-last d-flex">
+            <div class="col-md-6 order-md-last d-flex">
 
-
-				<article class="gallery">
-				  <img src="images/r1.jpg" alt="guitar player at concert" />
-				  <img src="images/r2.jpg" alt="duo singing" />
-				  <img src="images/r3.jpg" alt="crowd cheering" />
-				  <img src="images/r4.jpg" alt="singer performing" />
-				  <img src="images/r5.jpg" alt="singer fistbumping crowd" />
-				  <img src="images/r6.jpg" alt="man with a guitar singing" />
-				  <img src="images/r7.jpg" alt="crowd looking at a lighted stage" />
-				  <img src="images/r8.jpg" alt="woman singing on stage" />
-				</article>
-			  
-			  
-          </div>
+                <article class="gallery">
+                    <img src="images/r1.jpg" alt="" />
+                    <img src="images/r2.jpg" alt="" />
+                    <img src="images/r3.jpg" alt="" />
+                    <img src="images/r4.jpg" alt="" />
+                    <img src="images/r5.jpg" alt="" />
+                    <img src="images/r6.jpg" alt="" />
+                    <img src="images/r7.jpg" alt="" />
+                    <img src="images/r8.jpg" alt="" />
+                </article>
+                </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 	  
 
 	  
