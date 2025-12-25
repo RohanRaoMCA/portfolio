@@ -44,10 +44,25 @@
 		    grid-column: auto / span 2;
 		    border-radius: 5px;
 		    position: relative;
-		
+		<!--
 		    &:nth-child(9n + 1) { 
 		      grid-column: 1 / span 2 
-		    }
+		    }-->
+
+
+
+								  &:nth-child(9n + 1) {
+					      grid-column: 1 / span 2;
+					    }
+					
+					    /* RULE 2: The Indent (Even Rows: 2, 4, 6...) */
+					    /* Target Item 6, 15, 24... */
+					    /* We force these to start at Column 2 (Indented) */
+					    &:nth-child(9n + 6) { 
+					      grid-column: 2 / span 2;
+					    }
+								  
+			  
 		
 		    &:hover,
 		    &:focus {
