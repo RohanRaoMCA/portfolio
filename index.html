@@ -21,20 +21,16 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-	/* --- GLOBAL VARIABLES --- */
-:root {
-  --size: 100px; /* Base size */
-}
-
+		/* --- GLOBAL & DESKTOP (5 items / 4 items) --- */
 .gallery {
+  --size: 100px;
   display: grid;
   grid-auto-rows: var(--size);
   margin-bottom: var(--size);
   place-items: start center;
   gap: 5px;
   
-  /* --- 1. DESKTOP DEFAULT (5 items / 4 items) --- */
-  /* 5 items * 2 span = 10 columns */
+  /* Desktop: 10 Columns (5 items x 2 span) */
   grid-template-columns: repeat(10, var(--size)); 
   
   &:has(:hover) a:not(:hover),
@@ -46,18 +42,16 @@
     object-fit: cover;
     width: calc(var(--size) * 2);
     height: calc(var(--size) * 2);
-    /* Hexagon Shape */
     clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
     transition: clip-path 0.25s, filter 0.75s;
     grid-column: auto / span 2;
     border-radius: 5px;
     position: relative;
 
-    /* DESKTOP CYCLE (9 items total) */
-    /* Row 1, 3, 5... start at Column 1 */
+    /* --- DESKTOP LOGIC (Cycle 9) --- */
+    /* Row 1, 3... Start at Col 1 */
     &:nth-child(9n + 1) { grid-column: 1 / span 2; }
-    
-    /* Row 2, 4, 6... start at Column 2 (Indent) */
+    /* Row 2, 4... Start at Col 2 (Indent) */
     &:nth-child(9n + 6) { grid-column: 2 / span 2; }
 
     &:hover,
@@ -65,11 +59,6 @@
       clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
       z-index: 1;
       transition: clip-path 0.25s, filter 0.25s;
-    }
-    
-    &:focus {
-      outline: 1px dashed black;
-      outline-offset: -5px;
     }
     
     & img {
@@ -81,60 +70,46 @@
   }
 }
 
-/* --- 2. TABLET VIEW (Max-width: 1100px) --- */
+/* --- TABLET (Max-width 1000px) --- */
 /* Pattern: 3 items / 2 items */
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
   .gallery {
-    /* 3 items * 2 span = 6 columns */
     grid-template-columns: repeat(6, var(--size)); 
   }
   
   .gallery a {
-    /* RESET Desktop Logic */
-    grid-column: auto / span 2;
-    
-    /* TABLET CYCLE (5 items total) */
-    /* Target Item 1, 6, 11... force start line */
+    /* 1. HARD RESET: Reset ALL items to default first */
+    /* This overrides the desktop "nth-child" rules */
+    &:nth-child(n) { grid-column: auto / span 2; }
+
+    /* 2. APPLY TABLET LOGIC (Cycle 5) */
+    /* Row 1, 3... Start at Col 1 */
     &:nth-child(5n + 1) { grid-column: 1 / span 2; }
-    
-    /* Target Item 4, 9, 14... (Start of even rows) force indent */
-    &:nth-child(5n + 4) { grid-column: 2 / span 2; }
-    
-    /* Override Desktop rules to prevent conflict */
-    &:nth-child(9n + 1) { grid-column: auto / span 2; }
-    &:nth-child(9n + 6) { grid-column: auto / span 2; }
-    /* Re-apply Tablet rules with higher specificity if needed, 
-       but the order here usually handles it. */
-    &:nth-child(5n + 1) { grid-column: 1 / span 2; }
+    /* Row 2, 4... Start at Col 2 */
     &:nth-child(5n + 4) { grid-column: 2 / span 2; }
   }
 }
 
-/* --- 3. MOBILE VIEW (Max-width: 700px) --- */
+/* --- MOBILE (Max-width 600px) --- */
 /* Pattern: 2 items / 1 item */
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .gallery {
-    --size: 80px; /* Smaller hexagons for phone */
-    /* 2 items * 2 span = 4 columns */
+    --size: 80px; /* Smaller for phone */
     grid-template-columns: repeat(4, var(--size)); 
   }
 
   .gallery a {
-    /* RESET Tablet/Desktop Logic */
-    grid-column: auto / span 2;
+    /* 1. HARD RESET: Reset ALL items again */
+    /* This ensures neither Desktop nor Tablet rules interfere */
+    &:nth-child(n) { grid-column: auto / span 2; }
 
-    /* MOBILE CYCLE (3 items total) */
-    /* Target Item 1, 4, 7... force start line */
-    &:nth-child(3n + 1) { grid-column: 1 / span 2; }
-
-    /* Target Item 3, 6, 9... (Start of even rows) force indent */
-    &:nth-child(3n + 3) { grid-column: 2 / span 2; }
+    /* 2. APPLY MOBILE LOGIC (Cycle 3) */
+    /* Row 1: 2 Items. Row 2: 1 Item. */
     
-    /* Explicitly clear previous breakpoints' math */
-    &:nth-child(5n + 1) { grid-column: auto / span 2; }
-    &:nth-child(5n + 4) { grid-column: auto / span 2; }
-    /* Re-assert Mobile rules */
+    /* Target Item 1, 4, 7... (Start of Odd Rows) -> Force Col 1 */
     &:nth-child(3n + 1) { grid-column: 1 / span 2; }
+
+    /* Target Item 3, 6, 9... (Start of Even Rows) -> Force Col 2 (Center) */
     &:nth-child(3n + 3) { grid-column: 2 / span 2; }
   }
 }
