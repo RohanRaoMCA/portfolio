@@ -21,101 +21,55 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-		.gallery {
-  --size: 100px;
-  display: grid;
-  grid-template-columns: repeat(6, var(--size));
-  grid-auto-rows: var(--size);
-  margin-bottom: var(--size);
-  place-items: start center;
-  gap: 5px;
-  
-  &:has(:hover) a:not(:hover),
-  &:has(:focus) a:not(:focus){
-    filter: brightness(0.5) contrast(0.5);
-  }
-
-  & a {
-    object-fit: cover;
-    width: calc(var(--size) * 2);
-    height: calc(var(--size) * 2);
-    clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
-    transition: clip-path 0.25s, filter 0.75s;
-    grid-column: auto / span 2;
-    border-radius: 5px;
-    position: relative;
-
-    &:nth-child(5n - 1) { 
-      grid-column: 2 / span 2 
-    }
-
-    &:hover,
-    &:focus {
-      clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
-      z-index: 1;
-      transition: clip-path 0.25s, filter 0.25s;
-    }
-    
-    &:focus {
-      outline: 1px dashed black;
-      outline-offset: -5px;
-    }
-    
-    & img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
+	.gallery {
+		  --size: 100px;
+		  display: grid;
+		  grid-template-columns: repeat(6, var(--size));
+		  grid-auto-rows: var(--size);
+		  margin-bottom: var(--size);
+		  place-items: start center;
+		  gap: 5px;
+		  
+		  &:has(:hover) a:not(:hover),
+		  &:has(:focus) a:not(:focus){
+		    filter: brightness(0.5) contrast(0.5);
+		  }
+		
+		  & a {
+		    object-fit: cover;
+		    width: calc(var(--size) * 2);
+		    height: calc(var(--size) * 2);
+		    clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
+		    transition: clip-path 0.25s, filter 0.75s;
+		    grid-column: auto / span 2;
+		    border-radius: 5px;
+		    position: relative;
+		
+		    &:nth-child(5n - 1) { 
+		      grid-column: 2 / span 2 
+		    }
+		
+		    &:hover,
+		    &:focus {
+		      clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+		      z-index: 1;
+		      transition: clip-path 0.25s, filter 0.25s;
+		    }
+		    
+		    &:focus {
+		      outline: 1px dashed black;
+		      outline-offset: -5px;
+		    }
+		    
+		    & img {
+		      position: absolute;
+		      width: 100%;
+		      height: 100%;
+		      object-fit: cover;
+		    }
+		  }
 }
-		<!--
-    /* Integrated CSS for the Gallery Section */
-    .gallery {
-        --size: 100px;
-        display: grid;
-        grid-template-columns: repeat(8, var(--size));
-        grid-auto-rows: var(--size);
-        margin-bottom: var(--size);
-        place-items: start center;
-        gap: 5px;
-    }
-
-    /* Handle hover/focus states for non-active images */
-    .gallery:has(:hover) img:not(:hover),
-    .gallery:has(:focus) img:not(:focus) {
-        filter: brightness(0.5) contrast(0.5);
-    }
-
-    .gallery img {
-        object-fit: cover;
-        width: calc(var(--size) * 2);
-        height: calc(var(--size) * 2);
-        /* Honeycomb shape clip-path */
-        clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
-        transition: clip-path 0.25s, filter 0.75s;
-        grid-column: auto / span 2;
-        border-radius: 5px;
-    }
-
-    /* Offset for the honeycomb layout */
-    .gallery img:nth-child(5n - 3) {
-        grid-column: 2 / span 2;
-    }
-
-    /* Hover effects */
-    .gallery img:hover,
-    .gallery img:focus {
-        clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
-        z-index: 1;
-        transition: clip-path 0.25s, filter 0.25s;
-    }
-
-    .gallery img:focus {
-        outline: 1px dashed black;
-        outline-offset: -5px;
-    }
-		-->
+		
     </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="margin:0;padding:0">
@@ -875,42 +829,8 @@
 							  </a>
 							  <a href="" target="_top">
 							    <img src="images/6r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/7r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/8r.jpg" alt="" />
-							  </a>
-							
-							  <a href="" target="_top">
-							    <img src="images/1r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/2r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/3r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/4r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/5r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/6r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/7r.jpg" alt="" />
-							  </a>
-							  <a href="" target="_top">
-							    <img src="images/8r.jpg" alt="" />
-							  </a>
-		                    
-		        </article>
-
-					
+							  </a>       
+						</article>	
 		    	</div>
 			</div>
 		</div>
