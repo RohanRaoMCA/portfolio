@@ -94,14 +94,14 @@
 /* Pattern: 2 items / 1 item */
 @media (max-width: 800px) {
   .gallery {
-    --size: 80px; /* Smaller for phone */
+    --size: 100px; /* Smaller for phone */
     grid-template-columns: repeat(4, var(--size)); 
   }
 
   .gallery a {
     /* 1. HARD RESET: Reset ALL items again */
     /* This ensures neither Desktop nor Tablet rules interfere */
-    &:nth-child(n) { grid-column: 1 / span 2; }
+    &:nth-child(n) { grid-column: auto / span 2; }
 
     /* 2. APPLY MOBILE LOGIC (Cycle 3) */
     /* Row 1: 2 Items. Row 2: 1 Item. */
