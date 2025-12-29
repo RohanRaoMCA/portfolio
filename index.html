@@ -22,97 +22,97 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
 		/* --- GLOBAL & DESKTOP (5 items / 4 items) --- */
-.gallery {
-  --size: 100px;
-  display: grid;
-  grid-auto-rows: var(--size);
-  margin-bottom: var(--size);
-  place-items: start center;
-  gap: 5px;
-  
-  /* Desktop: 10 Columns (5 items x 2 span) */
-  grid-template-columns: repeat(10, var(--size)); 
-  
-  &:has(:hover) a:not(:hover),
-  &:has(:focus) a:not(:focus){
-    filter: brightness(0.5) contrast(0.5);
-  }
-
-  & a {
-    object-fit: cover;
-    width: calc(var(--size) * 2);
-    height: calc(var(--size) * 2);
-    clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
-    transition: clip-path 0.25s, filter 0.75s;
-    grid-column: auto / span 2;
-    border-radius: 5px;
-    position: relative;
-
-    /* --- DESKTOP LOGIC (Cycle 9) --- */
-    /* Row 1, 3... Start at Col 1 */
-    &:nth-child(9n + 1) { grid-column: 1 / span 2; }
-    /* Row 2, 4... Start at Col 2 (Indent) */
-    &:nth-child(9n + 6) { grid-column: 2 / span 2; }
-
-    &:hover,
-    &:focus {
-      clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
-      z-index: 1;
-      transition: clip-path 0.25s, filter 0.25s;
-    }
-    
-    & img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-}
-
-/* --- TABLET (Max-width 1000px) --- */
-/* Pattern: 3 items / 2 items */
-@media (max-width: 1000px) {
-  .gallery {
-    grid-template-columns: repeat(6, var(--size)); 
-  }
-  
-  .gallery a {
-    /* 1. HARD RESET: Reset ALL items to default first */
-    /* This overrides the desktop "nth-child" rules */
-    &:nth-child(n) { grid-column: auto / span 2; }
-
-    /* 2. APPLY TABLET LOGIC (Cycle 5) */
-    /* Row 1, 3... Start at Col 1 */
-    &:nth-child(5n + 1) { grid-column: 1 / span 2; }
-    /* Row 2, 4... Start at Col 2 */
-    &:nth-child(5n + 4) { grid-column: 2 / span 2; }
-  }
-}
-
-/* --- MOBILE (Max-width 600px) --- */
-/* Pattern: 2 items / 1 item */
-@media (max-width: 600px) {
-  .gallery {
-    --size: 100px; /* Smaller for phone */
-    grid-template-columns: repeat(4, var(--size)); 
-  }
-
-  .gallery a {
-    /* 1. HARD RESET: Reset ALL items again */
-    /* This ensures neither Desktop nor Tablet rules interfere */
-    &:nth-child(n) { grid-column: auto / span 2; }
-
-    /* 2. APPLY MOBILE LOGIC (Cycle 3) */
-    /* Row 1: 2 Items. Row 2: 1 Item. */
-    
-    /* Target Item 1, 4, 7... (Start of Odd Rows) -> Force Col 1 */
-    &:nth-child(3n + 1) { grid-column: 1 / span 2; }
-
-    /* Target Item 3, 6, 9... (Start of Even Rows) -> Force Col 2 (Center) */
-    &:nth-child(3n + 3) { grid-column: 2 / span 2; }
-  }
-}
+		.gallery {
+		  --size: 100px;
+		  display: grid;
+		  grid-auto-rows: var(--size);
+		  margin-bottom: var(--size);
+		  place-items: start center;
+		  gap: 5px;
+		  
+		  /* Desktop: 10 Columns (5 items x 2 span) */
+		  grid-template-columns: repeat(10, var(--size)); 
+		  
+		  &:has(:hover) a:not(:hover),
+		  &:has(:focus) a:not(:focus){
+		    filter: brightness(0.5) contrast(0.5);
+		  }
+		
+		  & a {
+		    object-fit: cover;
+		    width: calc(var(--size) * 2);
+		    height: calc(var(--size) * 2);
+		    clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
+		    transition: clip-path 0.25s, filter 0.75s;
+		    grid-column: auto / span 2;
+		    border-radius: 5px;
+		    position: relative;
+		
+		    /* --- DESKTOP LOGIC (Cycle 9) --- */
+		    /* Row 1, 3... Start at Col 1 */
+		    &:nth-child(9n + 1) { grid-column: 1 / span 2; }
+		    /* Row 2, 4... Start at Col 2 (Indent) */
+		    &:nth-child(9n + 6) { grid-column: 2 / span 2; }
+		
+		    &:hover,
+		    &:focus {
+		      clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+		      z-index: 1;
+		      transition: clip-path 0.25s, filter 0.25s;
+		    }
+		    
+		    & img {
+		      position: absolute;
+		      width: 100%;
+		      height: 100%;
+		      object-fit: cover;
+		    }
+		  }
+		}
+		
+		/* --- TABLET (Max-width 1000px) --- */
+		/* Pattern: 3 items / 2 items */
+		@media (max-width: 1000px) {
+		  .gallery {
+		    grid-template-columns: repeat(6, var(--size)); 
+		  }
+		  
+		  .gallery a {
+		    /* 1. HARD RESET: Reset ALL items to default first */
+		    /* This overrides the desktop "nth-child" rules */
+		    &:nth-child(n) { grid-column: auto / span 2; }
+		
+		    /* 2. APPLY TABLET LOGIC (Cycle 5) */
+		    /* Row 1, 3... Start at Col 1 */
+		    &:nth-child(5n + 1) { grid-column: 1 / span 2; }
+		    /* Row 2, 4... Start at Col 2 */
+		    &:nth-child(5n + 4) { grid-column: 2 / span 2; }
+		  }
+		}
+		
+		/* --- MOBILE (Max-width 600px) --- */
+		/* Pattern: 2 items / 1 item */
+		@media (max-width: 600px) {
+		  .gallery {
+		    --size: 100px; /* Smaller for phone */
+		    grid-template-columns: repeat(4, var(--size)); 
+		  }
+		
+		  .gallery a {
+		    /* 1. HARD RESET: Reset ALL items again */
+		    /* This ensures neither Desktop nor Tablet rules interfere */
+		    &:nth-child(n) { grid-column: auto / span 2; }
+		
+		    /* 2. APPLY MOBILE LOGIC (Cycle 3) */
+		    /* Row 1: 2 Items. Row 2: 1 Item. */
+		    
+		    /* Target Item 1, 4, 7... (Start of Odd Rows) -> Force Col 1 */
+		    &:nth-child(3n + 1) { grid-column: 1 / span 2; }
+		
+		    /* Target Item 3, 6, 9... (Start of Even Rows) -> Force Col 2 (Center) */
+		    &:nth-child(3n + 3) { grid-column: 2 / span 2; }
+		  }
+		}
     </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="margin:0;padding:0">
